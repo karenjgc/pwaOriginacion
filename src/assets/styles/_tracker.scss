@@ -1,0 +1,27 @@
+.tracker{
+    display: flex;
+    align-items: center;
+    padding-top: 5%;
+    font-size: 18px;
+    flex-direction: column;
+}
+
+.tracker__identificador{
+    line-height: .8;
+
+    span::after{
+        content: '';
+        display: inline-block;
+        width: 25px;
+        height: 6px;
+        -moz-border-radius: 7.5px;
+        -webkit-border-radius: 7.5px;
+        border-radius: 7.5px;
+        background-color: #F2F3F6;
+        margin-right: 3px;
+    }
+
+    span.tracker__identificador--active::after{
+        background-color: $color-primario;
+    }
+}

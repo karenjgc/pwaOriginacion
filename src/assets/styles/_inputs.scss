@@ -1,0 +1,47 @@
+.input-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.input-group__label{
+    font-size: 16px;
+    font-family: $font-medium;
+    margin-bottom: 5px;
+}
+
+.input-group__input{
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    input{
+        border: 1px solid #B3B3B3;
+        border-radius: 2px;
+        padding: 8px;
+        width: 100%;
+        font-size: 14px;
+        font-family: $font-medium;
+        padding-right: 28px;
+    }
+
+    img{
+        position: absolute;
+        right: 0;
+        padding-right: 8px;
+        height: 1rem;
+    }
+}
+
+.input-group__small{
+    display: flex;
+    align-items: center;
+    color: $color-gris;
+    padding: 10px 0px;
+    font-family: $font-medium;
+    font-size: 12px!important;
+
+    img{
+        margin-right: 4px;
+    }
+}

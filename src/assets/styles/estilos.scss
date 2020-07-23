@@ -1,0 +1,61 @@
+@import './fonts.scss';
+@import './colores.scss';
+@import './utilidades.scss';
+
+@import './contenedores.scss';
+@import './header.scss';
+@import './titulos.scss';
+@import './botones.scss';
+@import './inputs';
+@import './checkbox';
+@import './tracker';
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    color: #333333;
+    font-family: "Avenir_Next_Regular";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a{
+    color: $color-primario;
+    text-decoration: none;
+}
+
+small{
+    color: $color-gris;
+    font-family: $font-medium;
+    font-size: 12px;
+}
+
+label{
+    display: inline-block;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+    
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #33333357; 
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #33333357; 
+}
+  

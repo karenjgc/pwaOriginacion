@@ -1,0 +1,28 @@
+.header{
+    display: flex;
+    background-color: $color-primario;
+    padding: 1rem;
+}
+
+.header-titulo{
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-titulo__titulo{
+    font-family: $font-bold;
+    color: $color-blanco;
+    font-size: 24px;
+    margin: 0;
+}
+
+.header-titulo__subtitulo{
+    font-family: $font-medium;
+    color: $color-blanco;
+    font-size: 16px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}

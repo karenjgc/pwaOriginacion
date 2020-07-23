@@ -1,0 +1,45 @@
+.cont-landing{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.cont-form{
+    padding: 18% 10%;
+}
+
+.cont-captura{
+    background-color: rgba($color-gris, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cont-captura__img{
+    height: 70%;
+    width: 70%;
+    background-color: #F2F3F6;
+    border-radius: 10px;
+    border: 2px dashed $color-gris;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        width: 80%;
+    }
+}
+
+.cont-mensaje{
+    display: flex;
+    flex-direction: column;
+    background-color: #F2F3F6;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    font-size: 14px;
+}
+
+.cont-mensaje__titulo{
+    color: $color-primario;
+    padding-bottom: .5rem;
+}
