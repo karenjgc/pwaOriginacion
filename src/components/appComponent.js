@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 //Components
 import IndexComponent from './indexComponent';
 import SolicitudCreditoComponent from './solicitudCreditoComponent';
-import TrackerCreditoComponent from './trackerCreditoComponent';
+import TrackerCreditoComponent from './trackerComponent/trackerCreditoComponent';
 import CapturaCredencialComponent from './capturaCredencialComponent';
 
 export default class App extends Component{

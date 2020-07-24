@@ -8,6 +8,7 @@
 @import './botones.scss';
 @import './inputs';
 @import './checkbox';
+@import './radioButton';
 @import './tracker';
 
 body {
@@ -33,7 +34,7 @@ a{
 small{
     color: $color-gris;
     font-family: $font-medium;
-    font-size: 12px;
+    font-size: 10px;
 }
 
 label{

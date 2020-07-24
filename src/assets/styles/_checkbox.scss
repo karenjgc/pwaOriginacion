@@ -36,9 +36,14 @@
 
 /* Span */
 .checkbox > span {
-    display: inline-block;
+    display: flex;
     width: 100%;
     cursor: pointer;
+
+    & > small{
+        padding-top: 5px;
+        font-size: 12px!important;
+    }
 }
 
 /* Box */
@@ -50,8 +55,8 @@
     border: solid 2px; /* Safari */
     border-color: $color-gris;
     border-radius: 2px;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     vertical-align: top;
     transition: border-color 0.2s, background-color 0.2s;
 }
@@ -63,8 +68,8 @@
     position: absolute;
     top: 3px;
     left: 1px;
-    width: 10px;
-    height: 5px;
+    width: 8px;
+    height: 3px;
     border: solid 2px transparent;
     border-right: none;
     border-top: none;
