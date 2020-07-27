@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 //Images
 import icoCamara from '../../assets/img/icoCamara.svg';
 import icoCheck from '../../assets/img/icoCheck.svg';
-import { withRouter } from 'react-router-dom';
+import icoInterrogacion from '../../assets/img/icoInterrogacion.svg';
+import imgIne from '../../assets/img/imgIne.jpg';
 
 class IdentificateComponent extends Component{
     state = {
@@ -92,7 +94,17 @@ class IdentificateComponent extends Component{
                                             value={ this.state.curp }
                                         />
                                         {
-                                            this.state.curp !== '' ? <img src={ icoCheck } alt="icoCheck"/> : null
+                                            this.state.curp !== '' ? 
+                                            <img src={ icoCheck } alt="icoCheck"/> : 
+                                            <div className="tooltip">
+                                                <img src={ icoInterrogacion } alt="icoInterrogacion"/>
+                                                <div className="tooltip__contenido">
+                                                    <label className="tooltip__titulo">Ubica tu CURP</label>
+                                                    <div className="tooltip__img">
+                                                        <img src={ imgIne } alt="imgIne"/>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         }
                                     </div>
                                 </div>
@@ -260,7 +272,16 @@ class IdentificateComponent extends Component{
                                                     value={ this.state.codigo }
                                                 />
                                                 {
-                                                    this.state.codigo !== '' ? <img src={ icoCheck } alt="icoCheck"/> : null
+                                                    this.state.codigo !== '' ? <img src={ icoCheck } alt="icoCheck"/> : 
+                                                    <div className="tooltip">
+                                                        <img src={ icoInterrogacion } alt="icoInterrogacion"/>
+                                                        <div className="tooltip__contenido">
+                                                            <label className="tooltip__titulo">Ubica tu código identificador</label>
+                                                            <div className="tooltip__img">
+                                                                <img src={ imgIne } alt="imgIne"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 }
                                             </div>
                                         </div>
@@ -288,7 +309,16 @@ class IdentificateComponent extends Component{
                                                             value={ this.state.claveElector }
                                                         />
                                                         {
-                                                            this.state.claveElector !== '' ? <img src={ icoCheck } alt="icoCheck"/> : null
+                                                            this.state.claveElector !== '' ? <img src={ icoCheck } alt="icoCheck"/> :
+                                                            <div className="tooltip">
+                                                                <img src={ icoInterrogacion } alt="icoInterrogacion"/>
+                                                                <div className="tooltip__contenido">
+                                                                    <label className="tooltip__titulo">Ubica tu clave de elector</label>
+                                                                    <div className="tooltip__img">
+                                                                        <img src={ imgIne } alt="imgIne"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         }
                                                     </div>
                                                 </div> 
@@ -302,7 +332,16 @@ class IdentificateComponent extends Component{
                                                             value={ this.state.folio }
                                                         />
                                                         {
-                                                            this.state.folio !== '' ? <img src={ icoCheck } alt="icoCheck"/> : null
+                                                            this.state.folio !== '' ? <img src={ icoCheck } alt="icoCheck"/> : 
+                                                            <div className="tooltip">
+                                                                <img src={ icoInterrogacion } alt="icoInterrogacion"/>
+                                                                <div className="tooltip__contenido">
+                                                                    <label className="tooltip__titulo">Ubica tu folio</label>
+                                                                    <div className="tooltip__img">
+                                                                        <img src={ imgIne } alt="imgIne"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         }
                                                     </div>
                                                 </div> 
@@ -316,7 +355,16 @@ class IdentificateComponent extends Component{
                                                             value={ this.state.anoRegistro }
                                                         />
                                                         {
-                                                            this.state.anoRegistro !== '' ? <img src={ icoCheck } alt="icoCheck"/> : null
+                                                            this.state.anoRegistro !== '' ? <img src={ icoCheck } alt="icoCheck"/> : 
+                                                            <div className="tooltip">
+                                                                <img src={ icoInterrogacion } alt="icoInterrogacion"/>
+                                                                <div className="tooltip__contenido">
+                                                                    <label className="tooltip__titulo">Ubica tu año de registro</label>
+                                                                    <div className="tooltip__img">
+                                                                        <img src={ imgIne } alt="imgIne"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         }
                                                     </div>
                                                 </div> 
@@ -328,8 +376,8 @@ class IdentificateComponent extends Component{
                         }
                 </div>
                 {
-                    this.state.inicioTracker ?  <div className="btn-center">
-                        <button className="btn btn--primario">Continuar</button>
+                    !this.state.tipoFormulario ?  <div className="btn-center">
+                        <button onClick={ this.props.actualizaAccion } className="btn btn--primario">Continuar</button>
                     </div> : null
                 }
             </React.Fragment>

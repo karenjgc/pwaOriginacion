@@ -55,7 +55,7 @@ export default class CapturaCredencialComponent extends Component{
             <div className="cont-landing">
                 <HeaderComponent headerData={ this.headerData }/>
                 <div className="u-flex-auto cont-captura">
-                    <div className="cont-captura__img" onClick={ this.cambiaImagen }>
+                    <div className={`cont-captura__img ${ (this.state.tipoImg === 2 || this.state.tipoImg === 3) ? 'cont-captura__img--verde' : ''}`} onClick={ this.cambiaImagen }>
                         <img src={ this.state.imgSeleccionada } alt="icoCamaraGris"/>
                     </div>
                 </div>  

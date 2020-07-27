@@ -18,7 +18,7 @@ export default class IndexComponent extends Component{
     
     render(){
         return(
-            <div className="cont-landing">
+            <div className="cont-landing cont-landing--gris">
                 <HeaderComponent headerData={ this.headerData }/>
                 <img className="u-w-100" src={ imgLanding } alt="imgLanding"/>
                 <div className="titulo-landing">

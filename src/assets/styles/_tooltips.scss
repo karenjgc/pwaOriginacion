@@ -1,0 +1,74 @@
+.tooltip {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    margin-right: 10px;
+
+    &:hover > .tooltip__contenido{
+        display: block;
+    }
+}
+
+.tooltip__contenido {
+    display: none;
+    background-color: $color-blanco;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 29px;
+    right: -29px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+  
+.tooltip__contenido::after {
+    top: 169px;
+    right: 24px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color: #fff;
+    border-width: 12px;
+}
+
+.tooltip__contenido::before {
+    content: "";
+    position: absolute;
+    top: 162px;
+    right: 28px;
+    transform: rotate(45deg);
+    width: 16px;
+    height: 16px;
+    z-index: -1;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+
+.tooltip__titulo{
+    background: $color-gris;
+    width: 100%;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    font-size: 12px;
+    padding: 2px 0;
+}
+
+.tooltip__img{    
+    padding: 7px;
+    background-color: $color-blanco;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+
+    img{
+        width: 13rem;
+        height: auto;
+    }
+}

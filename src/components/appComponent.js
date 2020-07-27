@@ -6,6 +6,7 @@ import IndexComponent from './indexComponent';
 import SolicitudCreditoComponent from './solicitudCreditoComponent';
 import TrackerCreditoComponent from './trackerComponent/trackerCreditoComponent';
 import CapturaCredencialComponent from './capturaCredencialComponent';
+import AgendarCitaComponent from './agendarCitaComponent';
 
 export default class App extends Component{
 	render(){
@@ -16,6 +17,7 @@ export default class App extends Component{
 					<Route path='/solicitud-credito' exact component={ SolicitudCreditoComponent }/>
 					<Route path='/tracker-credito' exact component={ TrackerCreditoComponent }/>
 					<Route path='/captura-credencial' exact component={ CapturaCredencialComponent }/>
+					<Route path='/agendar-cita' exact component={ AgendarCitaComponent }/>
 				</Switch>
 			</BrowserRouter>
 		)

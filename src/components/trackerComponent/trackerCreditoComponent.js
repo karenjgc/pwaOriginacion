@@ -7,6 +7,7 @@ import InfoPersonalComponent from './infoPersonalComponent';
 import DondeVivesComponent from './dondeVivesComponent';
 
 export default class TrackerCreditoComponent extends Component{
+
     headerData = {
 		mostrarFlecha: true,
 		titulo: 'Solicita tu crédito',
@@ -15,7 +16,7 @@ export default class TrackerCreditoComponent extends Component{
     };
 
     state = {
-        inicioTracker: false,
+        accion: this.props.location.state ? 2 : 1,
         tracker: [
             {
                 num: '1',
@@ -28,22 +29,32 @@ export default class TrackerCreditoComponent extends Component{
             {
                 num: '3',
                 titulo: '¿Dónde vives?'
+            },
+            {
+                num: '4',
+                titulo: 'Agendar'
             }
         ]
     };
 
-    render(){
-        let accion = this.props.location.state ? this.props.location.state.accion : 1;
+    actualizaAccion = () => {
+        this.setState({
+            accion: this.state.accion + 1
+        })
+    };
 
-        let cargaComponente = () => {
-            switch(accion){
-                case 1: return <IdentificateComponent/>;
-                case 2: return <InfoPersonalComponent/>;
-                case 3: return <DondeVivesComponent/>;
-                default: return <h1>Error de carga.</h1>
-            }
-        };
-    
+    cargaComponente = () => {
+        switch(this.state.accion){
+            case 1: return <IdentificateComponent actualizaAccion={ this.actualizaAccion }/>;
+            case 2: return <InfoPersonalComponent actualizaAccion={ this.actualizaAccion }/>;
+            case 3: return <DondeVivesComponent actualizaAccion={ this.actualizaAccion }/>;
+            default: return <h1>Error de carga.</h1>
+        }
+    };
+
+    render(){
+        let accion = this.state.accion;
+
         return(
             <div className="cont-landing">
                 <HeaderComponent headerData={ this.headerData }/>
@@ -61,7 +72,7 @@ export default class TrackerCreditoComponent extends Component{
                     </div>
                 </div> 
                 {
-                        cargaComponente()
+                    this.cargaComponente()
                 }
             </div>
         )

@@ -51,7 +51,7 @@ export default class SolicitudCreditoComponent extends Component {
             <div className="cont-landing">
                 <HeaderComponent headerData={ this.headerData }/>
                 <div className="cont-form u-flex-auto">
-                    <div className="input-group">
+                    <div className="input-group u-mb-1">
                         <label className="input-group__label">Ingresa tu número de celular</label>
                         <div className="input-group__input">
                             <input 

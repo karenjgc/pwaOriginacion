@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 
 //Images
 import icoFlechaIzquierda from '../assets/img/icoFlecha.svg';
+import { withRouter } from 'react-router';
 
-export default class HeaderComponent extends Component{
+class HeaderComponent extends Component{
+
+    irAtras = () => {
+        this.props.history.goBack();
+    }
 
     render(){
         let headerData = this.props.headerData;
@@ -11,7 +16,7 @@ export default class HeaderComponent extends Component{
         return(
             <header className="header">
                 {
-                    headerData.mostrarFlecha ? <img src={ icoFlechaIzquierda } alt="icoFlechaIzquierda"/> : null
+                    headerData.mostrarFlecha ? <img onClick={ this.irAtras } src={ icoFlechaIzquierda } alt="icoFlechaIzquierda"/> : null
                 }
                 
                 <div className="header-titulo">
@@ -24,3 +29,5 @@ export default class HeaderComponent extends Component{
         )
     }
 }
+
+export default withRouter(HeaderComponent);

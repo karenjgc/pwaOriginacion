@@ -10,11 +10,14 @@
 @import './checkbox';
 @import './radioButton';
 @import './tracker';
+@import './chips';
+@import './tooltips';
 
 body {
+    max-width: 768px; // Max-width you want
     width: 100%;
     height: 100%;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     list-style: none;
     text-decoration: none;

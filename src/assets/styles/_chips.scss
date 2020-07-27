@@ -1,0 +1,16 @@
+
+.chips{
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 6rem 6rem;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.chips__chip{
+    background-color: #F2F3F6;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin: 5px;
+    text-align: center;
+}
