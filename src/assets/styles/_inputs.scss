@@ -29,7 +29,14 @@
     }
 
     input:focus, select:focus{
-        outline-color: #43B02A;
+        outline: none !important;
+        border: .5px solid #43B02A;
+        background-color: #ffffff!important;
+
+    }
+
+    input:-internal-autofill-selected {
+        background-color: #ffffff !important;
     }
 
     > img{
@@ -48,6 +55,7 @@
     &--desac{
         input{
             color: rgba(#333333, 0.25);
+            pointer-events: none;
         }
     }
 }

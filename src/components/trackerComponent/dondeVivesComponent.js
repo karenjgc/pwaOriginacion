@@ -16,7 +16,8 @@ class DondeVivesComponent extends Component{
         numExterior: '',
         numInterior: '',
         calles: '',
-        referencia: ''
+        referencia: '',
+        formaContacto: false
     };
 
     onChange = (e, boolean) => {
@@ -186,6 +187,18 @@ class DondeVivesComponent extends Component{
                                 this.state.referencia !== '' ? <img src={ icoCheck } alt="icoCheck"/> : null
                             }
                         </div>
+                    </div>
+                    <div className="u-flex u-align-center">
+                        <label className="checkbox">
+                            <input 
+                                name="formaContacto"
+                                type="checkbox"
+                                checked={ this.state.formaContacto }
+                                onChange={ (e) => this.onChange(e, true) }
+                            />
+                            <span></span>
+                        </label>
+                        <small>He leído y acepto la <a className="u-color-primario" href="facebook.com">firma de contratos</a></small>
                     </div>
                 </div>
                 {

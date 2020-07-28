@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import Select from 'react-select'
 
 //Images
 import icoCamara from '../../assets/img/icoCamara.svg';
 import icoCheck from '../../assets/img/icoCheck.svg';
 import icoInterrogacion from '../../assets/img/icoInterrogacion.svg';
-import imgIne from '../../assets/img/imgIne.jpg';
+
+import imgAnoRegistro from '../../assets/img/tooltips/imgAnoRegistro.png';
+import imgClaveElector from '../../assets/img/tooltips/imgClaveElector.png';
+import imgCodigo from '../../assets/img/tooltips/imgCodigo.png';
+import imgCurp from '../../assets/img/tooltips/imgCurp.png';
+import imgFolio from '../../assets/img/tooltips/imgFolio.png';
 
 class IdentificateComponent extends Component{
     state = {
@@ -83,9 +89,31 @@ class IdentificateComponent extends Component{
         }, this.sendData);
     }
 
+    conozcoCurp = () => {
+        this.setState({
+            sinCurp: !this.state.sinCurp,
+            curp: '',
+            nombre: '',
+            apellidoMaterno: '',
+            apellidoPaterno: '',
+            diaNacimiento: '',
+            mesNacimiento: '',
+            anoNacimiento: '',
+            genero: '0',
+            estado: '0',
+        }, this.sendData);
+    }
+
     render(){
-        let genero = ['Mujer', 'Hombre'];
-        let estado = ['Chihuahua', 'CDMX'];
+        let genero = [
+            { value: '1', label: 'Mujer' },
+            { value: '2', label: 'Hombre' }
+        ];
+
+        let estado = [
+            { value: '1', label: 'Chihuahua' },
+            { value: '2', label: 'CDMX' }
+        ];
 
         return(
             <React.Fragment>
@@ -121,7 +149,7 @@ class IdentificateComponent extends Component{
                                                     this.state.tooltips.curpTooltip ?  <div className="tooltip__contenido">
                                                         <label className="tooltip__titulo">Ubica tu CURP</label>
                                                         <div className="tooltip__img">
-                                                            <img src={ imgIne } alt="imgIne"/>
+                                                            <img src={ imgCurp } alt="imgIne"/>
                                                         </div>
                                                     </div> : null
                                                 }
@@ -135,7 +163,7 @@ class IdentificateComponent extends Component{
                                             name="sinCurp"
                                             type="checkbox"
                                             checked={ this.state.sinCurp }
-                                            onChange={ (e) => this.onChange(e, true) }
+                                            onChange={ (e) => this.conozcoCurp(e, true) }
                                         />
                                         <span><small>No conozco mi CURP</small></span>
                                     </label>
@@ -221,18 +249,14 @@ class IdentificateComponent extends Component{
                                             <div className="input-group u-w-50 u-mr-1 u-mb-0">
                                                 <label className="input-group__label">Género</label>
                                                 <div className="input-group__input">
-                                                    <select 
-                                                            name="genero" 
-                                                            className="formControl formControlArrow formControl--primary" 
-                                                            onChange={ (e) => this.onChange(e, false) }
-                                                        >
-                                                            <option value="0">Elige una opción</option>
-                                                            {
-                                                                genero.map((val, index) => {
-                                                                    return ( <option value={ index + 1 } key={ index }>{ val }</option>)
-                                                                })
-                                                            }
-                                                    </select>
+                                                    <Select 
+                                                        name="genero"
+                                                        className="select-lista" 
+                                                        classNamePrefix="select-lista__select" 
+                                                        placeholder="Elige una opción"
+                                                        options={ genero }
+                                                        onChange={ (e) => this.onChange({target: { name:'genero', value: e.value }}) }
+                                                    />
                                                     {
                                                         this.state.genero !== '0' ? <img src={ icoCheck } alt="icoCheck"/> : <div className="select__flecha"></div>
                                                     }
@@ -241,24 +265,25 @@ class IdentificateComponent extends Component{
                                             <div className="input-group u-w-50 u-mb-0">
                                                 <label className="input-group__label">Estado</label>
                                                 <div className="input-group__input">
-                                                    <select 
-                                                            name="estado" 
-                                                            className="formControl formControlArrow formControl--primary" 
-                                                            onChange={ (e) => this.onChange(e, false) }
-                                                        >
-                                                            <option value="0">Elige una opción</option>
-                                                            {
-                                                                estado.map((val, index) => {
-                                                                    return ( <option value={ index + 1 } key={ index }>{ val }</option>)
-                                                                })
-                                                            }
-                                                    </select>
+                                                    <Select 
+                                                        name="estado"
+                                                        className="select-lista" 
+                                                        classNamePrefix="select-lista__select" 
+                                                        placeholder="Elige una opción"
+                                                        options={ estado }
+                                                        onChange={ (e) => this.onChange({target: { name:'estado', value: e.value }}) }
+                                                    />
                                                     {
                                                         this.state.estado !== '0' ? <img src={ icoCheck } alt="icoCheck"/> : <div className="select__flecha"></div>
                                                     }
                                                 </div>
                                             </div> 
                                         </div>
+                                    </React.Fragment> : null
+                                }
+                                {
+                                    this.state.curp !== '' || this.evaluaDatosPersonales() ?
+                                    <React.Fragment>
                                         <div className="cont-mensaje">
                                             <strong className="cont-mensaje__titulo">Datos personales</strong>
                                             <div>
@@ -295,7 +320,7 @@ class IdentificateComponent extends Component{
                                                                 this.state.tooltips.codigoTooltip ? <div className="tooltip__contenido">
                                                                     <label className="tooltip__titulo">Ubica tu código identificador</label>
                                                                     <div className="tooltip__img">
-                                                                        <img src={ imgIne } alt="imgIne"/>
+                                                                        <img src={ imgCodigo } alt="imgIne"/>
                                                                     </div>
                                                                 </div> : null
                                                             }
@@ -337,7 +362,7 @@ class IdentificateComponent extends Component{
                                                             this.state.tooltips.claveTooltip ? <div className="tooltip__contenido">
                                                                 <label className="tooltip__titulo">Ubica tu clave de elector</label>
                                                                 <div className="tooltip__img">
-                                                                    <img src={ imgIne } alt="imgIne"/>
+                                                                    <img src={ imgClaveElector } alt="imgIne"/>
                                                                 </div>
                                                             </div> : null
                                                         }     
@@ -362,7 +387,7 @@ class IdentificateComponent extends Component{
                                                             this.state.tooltips.folioTooltip ? <div className="tooltip__contenido">
                                                                 <label className="tooltip__titulo">Ubica tu folio</label>
                                                                 <div className="tooltip__img">
-                                                                    <img src={ imgIne } alt="imgIne"/>
+                                                                    <img src={ imgFolio } alt="imgIne"/>
                                                                 </div>
                                                             </div> : null
                                                         }
@@ -387,7 +412,7 @@ class IdentificateComponent extends Component{
                                                             this.state.tooltips.anoTooltip ? <div className="tooltip__contenido">
                                                                 <label className="tooltip__titulo">Ubica tu año de registro</label>
                                                                 <div className="tooltip__img">
-                                                                    <img src={ imgIne } alt="imgIne"/>
+                                                                    <img src={ imgAnoRegistro } alt="imgIne"/>
                                                                 </div>
                                                             </div> : null
                                                         }

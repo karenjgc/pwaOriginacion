@@ -21,7 +21,7 @@
 }
   
 .tooltip__contenido::after {
-    top: 169px;
+    top: 165px;
     right: 24px;
     border: solid transparent;
     content: " ";
@@ -37,7 +37,7 @@
 .tooltip__contenido::before {
     content: "";
     position: absolute;
-    top: 162px;
+    top: 158px;
     right: 28px;
     transform: rotate(45deg);
     width: 16px;

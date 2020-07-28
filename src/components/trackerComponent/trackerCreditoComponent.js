@@ -7,6 +7,9 @@ import InfoPersonalComponent from './infoPersonalComponent';
 import DondeVivesComponent from './dondeVivesComponent';
 import CapturaCredencialComponent from '../capturaCredencialComponent';
 
+//Images
+import icoLlamada from '../../assets/img/icoLlamada.svg';
+
 export default class TrackerCreditoComponent extends Component{
     headerData = [
         {
@@ -100,6 +103,12 @@ export default class TrackerCreditoComponent extends Component{
                 }
                 {
                     this.cargaComponente()
+                }
+
+                {
+                    accion < 4 ? <div className="btn-llamada">
+                        <img src={ icoLlamada } alt="icoLLamada"/>
+                    </div> : null
                 }
             </div>
         )

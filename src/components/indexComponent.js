@@ -6,7 +6,6 @@ import HeaderComponent from './headerComponent';
 
 //Images
 import imgLanding from '../assets/img/imgLanding.png';
-import icoLlamada from '../assets/img/icoLlamada.svg';
 
 export default class IndexComponent extends Component{
 
@@ -29,10 +28,6 @@ export default class IndexComponent extends Component{
                 </div>
                 <div className="btn-center">
                     <Link to={{ pathname: '/solicitud-credito' }} className="btn btn--primario">Lo quiero ahora</Link>
-                </div>
-
-                <div className="btn-llamada">
-                    <img src={ icoLlamada } alt="icoLLamada"/>
                 </div>
             </div>
         )
