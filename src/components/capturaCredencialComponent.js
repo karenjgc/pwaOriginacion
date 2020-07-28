@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 
-//Components
-import HeaderComponent from './headerComponent';
-
 //Images
 import icoCamaraGris from '../assets/img/icoCamaraGris.svg';
 import imgIneFrente from '../assets/img/imgIneFrente.jpg';
 import imgIneAtras from '../assets/img/imgIneAtras.jpg';
+import { withRouter } from 'react-router';
 
-export default class CapturaCredencialComponent extends Component{
+class CapturaCredencialComponent extends Component{
     state = {
         tipoImg: 1,
         imgSeleccionada: icoCamaraGris
@@ -38,7 +36,7 @@ export default class CapturaCredencialComponent extends Component{
                 tempImgSeleccionada = imgIneAtras;
             break;
             case 4:
-                this.props.history.push('/tracker-credito', {accion: 2});
+                this.props.actualizaAccion(2);
             break;
             default:
                 tempImgSeleccionada = icoCamaraGris;
@@ -52,14 +50,13 @@ export default class CapturaCredencialComponent extends Component{
 
     render(){
         return(
-            <div className="cont-landing">
-                <HeaderComponent headerData={ this.headerData }/>
-                <div className="u-flex-auto cont-captura">
-                    <div className={`cont-captura__img ${ (this.state.tipoImg === 2 || this.state.tipoImg === 3) ? 'cont-captura__img--verde' : ''}`} onClick={ this.cambiaImagen }>
-                        <img src={ this.state.imgSeleccionada } alt="icoCamaraGris"/>
-                    </div>
-                </div>  
-            </div>
+            <div className="u-flex-auto cont-captura">
+                <div className={`cont-captura__img ${ (this.state.tipoImg === 2 || this.state.tipoImg === 3) ? 'cont-captura__img--verde cont-captura__img--foto' : ''}`} onClick={ this.cambiaImagen }>
+                    <img src={ this.state.imgSeleccionada } alt="icoCamaraGris"/>
+                </div>
+            </div>  
         )
     }
 }
+
+export default withRouter(CapturaCredencialComponent);

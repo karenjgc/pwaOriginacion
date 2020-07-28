@@ -24,7 +24,14 @@ class IdentificateComponent extends Component{
         mesNacimiento: '',
         anoNacimiento: '',
         genero: '0',
-        estado: '0'
+        estado: '0',
+        tooltips: {
+            curpTooltip: false,
+            codigoTooltip: false,
+            claveTooltip: false,
+            folioTooltip: false,
+            anoTooltip: false
+        }
     };
 
     onChange = (e, boolean) => {
@@ -64,6 +71,18 @@ class IdentificateComponent extends Component{
         return valido;
     }
 
+    mostrarTooltip = (nombreCampo) => {
+        let datosNuevos = {};
+
+        for(let tooltip of Object.keys(this.state.tooltips)){
+            datosNuevos[tooltip] = tooltip === nombreCampo ? !this.state.tooltips[nombreCampo] : false
+        }
+
+        this.setState({
+            tooltips: datosNuevos
+        }, this.sendData);
+    }
+
     render(){
         let genero = ['Mujer', 'Hombre'];
         let estado = ['Chihuahua', 'CDMX'];
@@ -77,7 +96,7 @@ class IdentificateComponent extends Component{
                                 <strong>Necesitamos datos de tu INE/IFE</strong>
                                 <div className="u-flex-between u-pt-1">
                                     <label className="u-txt-medium">Tomar foto INE</label>
-                                    <img className="u-cursor-pointer" src={ icoCamara } alt="icoCamara" onClick={ this.irCaptura }/>
+                                    <img className="u-cursor-pointer" src={ icoCamara } alt="icoCamara" onClick={ () => this.props.actualizaAccion(4) }/>
                                 </div>
                                 <div className="u-flex-end">
                                     <button name="tipoFormulario" className="btn-link-small" onClick={ (e) => this.onChange(e, true) }>Ingresar datos manualmente</button>
@@ -97,13 +116,15 @@ class IdentificateComponent extends Component{
                                             this.state.curp !== '' ? 
                                             <img src={ icoCheck } alt="icoCheck"/> : 
                                             <div className="tooltip">
-                                                <img src={ icoInterrogacion } alt="icoInterrogacion"/>
-                                                <div className="tooltip__contenido">
-                                                    <label className="tooltip__titulo">Ubica tu CURP</label>
-                                                    <div className="tooltip__img">
-                                                        <img src={ imgIne } alt="imgIne"/>
-                                                    </div>
-                                                </div>
+                                                <img src={ icoInterrogacion } onClick={ (e) => this.mostrarTooltip('curpTooltip') } alt="icoInterrogacion"/>
+                                                {
+                                                    this.state.tooltips.curpTooltip ?  <div className="tooltip__contenido">
+                                                        <label className="tooltip__titulo">Ubica tu CURP</label>
+                                                        <div className="tooltip__img">
+                                                            <img src={ imgIne } alt="imgIne"/>
+                                                        </div>
+                                                    </div> : null
+                                                }
                                             </div>
                                         }
                                     </div>
@@ -238,11 +259,6 @@ class IdentificateComponent extends Component{
                                                 </div>
                                             </div> 
                                         </div>
-                                    </React.Fragment> : null
-                                }
-                                {
-                                    this.state.curp !== '' || this.evaluaDatosPersonales() ? 
-                                    <div>
                                         <div className="cont-mensaje">
                                             <strong className="cont-mensaje__titulo">Datos personales</strong>
                                             <div>
@@ -272,16 +288,19 @@ class IdentificateComponent extends Component{
                                                     value={ this.state.codigo }
                                                 />
                                                 {
-                                                    this.state.codigo !== '' ? <img src={ icoCheck } alt="icoCheck"/> : 
-                                                    <div className="tooltip">
-                                                        <img src={ icoInterrogacion } alt="icoInterrogacion"/>
-                                                        <div className="tooltip__contenido">
-                                                            <label className="tooltip__titulo">Ubica tu código identificador</label>
-                                                            <div className="tooltip__img">
-                                                                <img src={ imgIne } alt="imgIne"/>
-                                                            </div>
+                                                    this.state.codigo !== '' ? <img src={ icoCheck } alt="icoCheck"/> : (
+                                                        <div className="tooltip">
+                                                            <img src={ icoInterrogacion } onClick={ (e) => this.mostrarTooltip('codigoTooltip') } alt="icoInterrogacion"/>
+                                                            {
+                                                                this.state.tooltips.codigoTooltip ? <div className="tooltip__contenido">
+                                                                    <label className="tooltip__titulo">Ubica tu código identificador</label>
+                                                                    <div className="tooltip__img">
+                                                                        <img src={ imgIne } alt="imgIne"/>
+                                                                    </div>
+                                                                </div> : null
+                                                            }
                                                         </div>
-                                                    </div>
+                                                    )
                                                 }
                                             </div>
                                         </div>
@@ -296,88 +315,94 @@ class IdentificateComponent extends Component{
                                                 <span><small>Mi credencial no tiene este dato</small></span>
                                             </label>
                                         </div>
-                                        {
-                                            this.state.sinCodigo ? 
-                                            <React.Fragment>
-                                                <div className="input-group u-mt-1">
-                                                    <label className="input-group__label">Clave de elector</label>
-                                                    <div className="input-group__input">
-                                                        <input 
-                                                            name="claveElector"
-                                                            placeholder=""
-                                                            onChange={ (e) => this.onChange(e, false) }
-                                                            value={ this.state.claveElector }
-                                                        />
+                                    </React.Fragment> : null
+                                }
+                                {
+                                    this.state.sinCodigo ? 
+                                    <React.Fragment>
+                                        <div className="input-group u-mt-1">
+                                            <label className="input-group__label">Clave de elector</label>
+                                            <div className="input-group__input">
+                                                <input 
+                                                    name="claveElector"
+                                                    placeholder=""
+                                                    onChange={ (e) => this.onChange(e, false) }
+                                                    value={ this.state.claveElector }
+                                                />
+                                                {
+                                                    this.state.claveElector !== '' ? <img src={ icoCheck } alt="icoCheck"/> :
+                                                    <div className="tooltip">
+                                                        <img src={ icoInterrogacion } onClick={ (e) => this.mostrarTooltip('claveTooltip') } alt="icoInterrogacion"/>
                                                         {
-                                                            this.state.claveElector !== '' ? <img src={ icoCheck } alt="icoCheck"/> :
-                                                            <div className="tooltip">
-                                                                <img src={ icoInterrogacion } alt="icoInterrogacion"/>
-                                                                <div className="tooltip__contenido">
-                                                                    <label className="tooltip__titulo">Ubica tu clave de elector</label>
-                                                                    <div className="tooltip__img">
-                                                                        <img src={ imgIne } alt="imgIne"/>
-                                                                    </div>
+                                                            this.state.tooltips.claveTooltip ? <div className="tooltip__contenido">
+                                                                <label className="tooltip__titulo">Ubica tu clave de elector</label>
+                                                                <div className="tooltip__img">
+                                                                    <img src={ imgIne } alt="imgIne"/>
                                                                 </div>
-                                                            </div>
+                                                            </div> : null
+                                                        }     
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div> 
+                                        <div className="input-group">
+                                            <label className="input-group__label">Folio (13 dígitos)</label>
+                                            <div className="input-group__input">
+                                                <input 
+                                                    name="folio"
+                                                    placeholder=""
+                                                    onChange={ (e) => this.onChange(e, false) }
+                                                    value={ this.state.folio }
+                                                />
+                                                {
+                                                    this.state.folio !== '' ? <img src={ icoCheck } alt="icoCheck"/> : 
+                                                    <div className="tooltip">
+                                                        <img src={ icoInterrogacion } onClick={ (e) => this.mostrarTooltip('folioTooltip') } alt="icoInterrogacion"/>
+                                                        {
+                                                            this.state.tooltips.folioTooltip ? <div className="tooltip__contenido">
+                                                                <label className="tooltip__titulo">Ubica tu folio</label>
+                                                                <div className="tooltip__img">
+                                                                    <img src={ imgIne } alt="imgIne"/>
+                                                                </div>
+                                                            </div> : null
                                                         }
                                                     </div>
-                                                </div> 
-                                                <div className="input-group">
-                                                    <label className="input-group__label">Folio (13 dígitos)</label>
-                                                    <div className="input-group__input">
-                                                        <input 
-                                                            name="folio"
-                                                            placeholder=""
-                                                            onChange={ (e) => this.onChange(e, false) }
-                                                            value={ this.state.folio }
-                                                        />
+                                                }
+                                            </div>
+                                        </div> 
+                                        <div className="input-group">
+                                            <label className="input-group__label">Año de registro</label>
+                                            <div className="input-group__input">
+                                                <input 
+                                                    name="anoRegistro"
+                                                    placeholder=""
+                                                    onChange={ (e) => this.onChange(e, false) }
+                                                    value={ this.state.anoRegistro }
+                                                />
+                                                {
+                                                    this.state.anoRegistro !== '' ? <img src={ icoCheck } alt="icoCheck"/> : 
+                                                    <div className="tooltip">
+                                                        <img src={ icoInterrogacion }  onClick={ (e) => this.mostrarTooltip('anoTooltip') } alt="icoInterrogacion"/>
                                                         {
-                                                            this.state.folio !== '' ? <img src={ icoCheck } alt="icoCheck"/> : 
-                                                            <div className="tooltip">
-                                                                <img src={ icoInterrogacion } alt="icoInterrogacion"/>
-                                                                <div className="tooltip__contenido">
-                                                                    <label className="tooltip__titulo">Ubica tu folio</label>
-                                                                    <div className="tooltip__img">
-                                                                        <img src={ imgIne } alt="imgIne"/>
-                                                                    </div>
+                                                            this.state.tooltips.anoTooltip ? <div className="tooltip__contenido">
+                                                                <label className="tooltip__titulo">Ubica tu año de registro</label>
+                                                                <div className="tooltip__img">
+                                                                    <img src={ imgIne } alt="imgIne"/>
                                                                 </div>
-                                                            </div>
+                                                            </div> : null
                                                         }
                                                     </div>
-                                                </div> 
-                                                <div className="input-group">
-                                                    <label className="input-group__label">Año de registro</label>
-                                                    <div className="input-group__input">
-                                                        <input 
-                                                            name="anoRegistro"
-                                                            placeholder=""
-                                                            onChange={ (e) => this.onChange(e, false) }
-                                                            value={ this.state.anoRegistro }
-                                                        />
-                                                        {
-                                                            this.state.anoRegistro !== '' ? <img src={ icoCheck } alt="icoCheck"/> : 
-                                                            <div className="tooltip">
-                                                                <img src={ icoInterrogacion } alt="icoInterrogacion"/>
-                                                                <div className="tooltip__contenido">
-                                                                    <label className="tooltip__titulo">Ubica tu año de registro</label>
-                                                                    <div className="tooltip__img">
-                                                                        <img src={ imgIne } alt="imgIne"/>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        }
-                                                    </div>
-                                                </div> 
-                                            </React.Fragment> : null
-                                        }
-                                    </div> : null
+                                                }
+                                            </div>
+                                        </div> 
+                                    </React.Fragment> : null
                                 }
                             </div>
                         }
                 </div>
                 {
                     !this.state.tipoFormulario ?  <div className="btn-center">
-                        <button onClick={ this.props.actualizaAccion } className="btn btn--primario">Continuar</button>
+                        <button onClick={ () => this.props.actualizaAccion(2) } className="btn btn--primario">Continuar</button>
                     </div> : null
                 }
             </React.Fragment>

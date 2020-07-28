@@ -5,14 +5,9 @@
     align-items: center;
     right: 0;
     margin-right: 10px;
-
-    &:hover > .tooltip__contenido{
-        display: block;
-    }
 }
 
 .tooltip__contenido {
-    display: none;
     background-color: $color-blanco;
     color: #fff;
     text-align: center;

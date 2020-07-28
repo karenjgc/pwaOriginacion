@@ -5,41 +5,65 @@ import HeaderComponent from '../headerComponent';
 import IdentificateComponent from './identificateComponent';
 import InfoPersonalComponent from './infoPersonalComponent';
 import DondeVivesComponent from './dondeVivesComponent';
+import CapturaCredencialComponent from '../capturaCredencialComponent';
 
 export default class TrackerCreditoComponent extends Component{
-
-    headerData = {
-		mostrarFlecha: true,
-		titulo: 'Solicita tu crédito',
-		subtitulo: 'en tan solo ',
-		strong: '3 pasos'
-    };
+    headerData = [
+        {
+            mostrarFlecha: true,
+            titulo: 'Solicita tu crédito',
+            subtitulo: 'en tan solo ',
+            strong: '3 pasos'
+        },
+        {
+            mostrarFlecha: true,
+            titulo: 'Cuéntanos sobre ti',
+            subtitulo: 'tu crédito en ',
+            strong: '3 pasos'
+        },
+        {
+            mostrarFlecha: true,
+            titulo: 'Ya falta poco',
+            subtitulo: 'tu crédito en ',
+            strong: '3 pasos'
+        },
+        {
+            mostrarFlecha: true,
+            titulo: 'Toma una foto',
+            subtitulo: 'del frente de tu ',
+            strong: 'INE/IFE'
+        }
+    ];
 
     state = {
-        accion: this.props.location.state ? 2 : 1,
+        accion: 1,
         tracker: [
             {
                 num: '1',
-                titulo: 'Identifícate'
+                titulo: 'Identifícate',
+                mostrar: true
             },
             {
                 num: '2',
-                titulo: 'Información personal'
+                titulo: 'Información personal',
+                mostrar: true
             },
             {
                 num: '3',
-                titulo: '¿Dónde vives?'
+                titulo: '¿Dónde vives?',
+                mostrar: true
             },
             {
                 num: '4',
-                titulo: 'Agendar'
+                titulo: 'Agendar',
+                mostrar: false
             }
         ]
     };
 
-    actualizaAccion = () => {
+    actualizaAccion = (valor) => {
         this.setState({
-            accion: this.state.accion + 1
+            accion: valor
         })
     };
 
@@ -48,7 +72,7 @@ export default class TrackerCreditoComponent extends Component{
             case 1: return <IdentificateComponent actualizaAccion={ this.actualizaAccion }/>;
             case 2: return <InfoPersonalComponent actualizaAccion={ this.actualizaAccion }/>;
             case 3: return <DondeVivesComponent actualizaAccion={ this.actualizaAccion }/>;
-            default: return <h1>Error de carga.</h1>
+            case 4: return <CapturaCredencialComponent actualizaAccion={ this.actualizaAccion }/>;
         }
     };
 
@@ -57,20 +81,23 @@ export default class TrackerCreditoComponent extends Component{
 
         return(
             <div className="cont-landing">
-                <HeaderComponent headerData={ this.headerData }/>
-
-                <div className="cont-tracker u-pt-1">
+                <HeaderComponent headerData={ this.headerData[accion - 1] }/>
+                {
+                    accion < 4 ? <div className="cont-tracker u-pt-1">
                     <div className="tracker">
-                        <strong><label className="u-color-primario">{ this.state.tracker[accion - 1].num }.&nbsp;</label>{ this.state.tracker[accion - 1 ].titulo }</strong>
-                        <div className="tracker__identificador">
-                            {
-                                this.state.tracker.map((val, index) => {
-                                return( <span className={`${ (index + 1) <= accion ? 'tracker__identificador--active' : ''}`} key={ index }></span>)
-                                })
-                            }
+                            <strong><label className="u-color-primario">{ this.state.tracker[accion - 1].num }.&nbsp;</label>{ this.state.tracker[accion - 1 ].titulo }</strong>
+                            <div className="tracker__identificador">
+                                {
+                                    this.state.tracker.map((val, index) => {
+                                        if(val.mostrar){
+                                            return( <span className={`${ (index + 1) <= accion ? 'tracker__identificador--active' : ''}`} key={ index }></span>)
+                                        }
+                                    })
+                                }
+                            </div>
                         </div>
-                    </div>
-                </div> 
+                    </div> : null
+                }
                 {
                     this.cargaComponente()
                 }

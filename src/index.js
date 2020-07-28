@@ -6,8 +6,6 @@ import App from './components/appComponent';
 import './assets/styles/estilos.scss';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <App/>,
   document.getElementById('root')
 );

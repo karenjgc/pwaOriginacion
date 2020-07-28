@@ -30,11 +30,15 @@
     justify-content: center;
     align-items: center;
 
+    img{
+        width: 25%;
+    }
+
     &--verde{
         border-color: $color-primario;
     }
 
-    img{
+    &--foto img{
         width: 80%;
     }
 }

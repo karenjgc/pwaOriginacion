@@ -7,8 +7,9 @@ export default class InfoPersonalComponent extends Component{
 
     state = {
         correoElectronico: '',
-        correoElectronico2: '',
         muestraCorreos: false,
+        correoElectronico2: '',
+        muestraCorreos2: false,
         ingreso: '',
         comprobarIngresos: null
     };
@@ -22,16 +23,20 @@ export default class InfoPersonalComponent extends Component{
         }, this.sendData);
     }
 
-    muestraCorreos = (e) => {
+    muestraCorreos = (e, campoCorreo) => {
+        let valorCorreo = e.target.value === '' ? false : true; 
+
         this.setState({
-            muestraCorreos: !this.state.muestraCorreos 
+            [campoCorreo]: valorCorreo
         }, this.sendData);
     }
 
-    autocompletar = (correo) => {
+    autocompletar = (correo, campoCorreo) => {
+        let muestraCorreos = campoCorreo === 'correoElectronico' ? 'muestraCorreos' : 'muestraCorreos2';
+
         this.setState({
-            correoElectronico: correo,
-            muestraCorreos: false
+            [campoCorreo]: correo,
+            [muestraCorreos]: false
         }, this.sendData);
     }
 
@@ -66,7 +71,7 @@ export default class InfoPersonalComponent extends Component{
                                     name="correoElectronico"
                                     placeholder=""
                                     onChange={ (e) => this.onChange(e, false) }
-                                    onFocus={ (e) => this.muestraCorreos(e) }
+                                    onKeyUp={ (e) => this.muestraCorreos(e, 'muestraCorreos') }
                                     value={ this.state.correoElectronico }
                                 />
                                 {
@@ -77,19 +82,20 @@ export default class InfoPersonalComponent extends Component{
                         {
                             this.state.muestraCorreos ?
                             <div className="chips">
-                                <small onClick={ () => this.autocompletar('@gmail.com') } className="chips__chip">@gmail.com</small>
-                                <small onClick={ () => this.autocompletar('@outlook.com') } className="chips__chip">@outlook.com</small>
-                                <small onClick={ () => this.autocompletar('@hotmail.com') } className="chips__chip">@hotmail.com</small>
-                                <small onClick={ () => this.autocompletar('@yahoo.com') } className="chips__chip">@yahoo.com</small>
+                                <small onClick={ () => this.autocompletar('@gmail.com', 'correoElectronico') } className="chips__chip">@gmail.com</small>
+                                <small onClick={ () => this.autocompletar('@outlook.com', 'correoElectronico') } className="chips__chip">@outlook.com</small>
+                                <small onClick={ () => this.autocompletar('@hotmail.com', 'correoElectronico') } className="chips__chip">@hotmail.com</small>
+                                <small onClick={ () => this.autocompletar('@yahoo.com', 'correoElectronico') } className="chips__chip">@yahoo.com</small>
                             </div> : null
                         }
-                        <div className="input-group u-mt-1">
+                        <div className={`input-group u-mt-1 ${ this.state.muestraCorreos2 ? 'u-mb-0' : '' }`}>
                             <label className="input-group__label">Confirmar correo electrónico</label>
                             <div className="input-group__input">
                                 <input 
                                     name="correoElectronico2"
                                     placeholder=""
                                     onChange={ (e) => this.onChange(e, false) }
+                                    onKeyUp={ (e) => this.muestraCorreos(e, 'muestraCorreos2') }
                                     value={ this.state.correoElectronico2 }
                                 />
                                 {
@@ -97,6 +103,15 @@ export default class InfoPersonalComponent extends Component{
                                 }
                             </div>
                         </div>
+                        {
+                            this.state.muestraCorreos2 ?
+                            <div className="chips">
+                                <small onClick={ () => this.autocompletar('@gmail.com', 'correoElectronico2') } className="chips__chip">@gmail.com</small>
+                                <small onClick={ () => this.autocompletar('@outlook.com', 'correoElectronico2') } className="chips__chip">@outlook.com</small>
+                                <small onClick={ () => this.autocompletar('@hotmail.com', 'correoElectronico2') } className="chips__chip">@hotmail.com</small>
+                                <small onClick={ () => this.autocompletar('@yahoo.com', 'correoElectronico2') } className="chips__chip">@yahoo.com</small>
+                            </div> : null
+                        }
                         <div className="input-group u-mt-1">
                             <label className="input-group__label">¿Cuánto ganas al mes?</label>
                             <div className="input-group__input">
@@ -134,7 +149,7 @@ export default class InfoPersonalComponent extends Component{
                 </div>
                 {
                     <div className="btn-center">
-                        <button onClick={ this.props.actualizaAccion } className="btn btn--primario">Continuar</button>
+                        <button onClick={ () => this.props.actualizaAccion(3) } className="btn btn--primario">Continuar</button>
                     </div>
                 }
             </React.Fragment>

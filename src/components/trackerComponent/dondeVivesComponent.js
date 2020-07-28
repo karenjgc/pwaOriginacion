@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Select from 'react-select'
 
 //Images
 import icoCheck from '../../assets/img/icoCheck.svg';
@@ -27,16 +28,31 @@ class DondeVivesComponent extends Component{
         }, this.sendData);
     }
 
+    seleccionarEstado = (e) => {
+        let dataValor = e.target.value;
+
+        this.setState({
+            estado: dataValor,
+            alcaldia: 'Álvaro Obregón',
+            colonia: 'Del Valle'
+        }, this.sendData);
+    }
+
     irAgendar = () => {
         this.props.history.push('/agendar-cita');
     }
 
     render(){
-        let estados = ['Chihuahua', 'CDMX', 'Durango'];
+        let estados = [
+            { value: '1', label: 'Chihuahua' },
+            { value: '2', label: 'CDMX' },
+            { value: '3', label: 'Durango' }
+        ];
 
         return(
             <React.Fragment>
                 <div className="cont-tracker__modulo">
+
                     <div  className="u-flex u-mt-1">
                     <div className="input-group u-mb-0 u-mr-1">
                             <label className="input-group__label">Código postal</label>
@@ -55,18 +71,14 @@ class DondeVivesComponent extends Component{
                         <div className="input-group u-w-50 u-mb-0">
                             <label className="input-group__label">Estado</label>
                             <div className="input-group__input">
-                                    <select 
-                                        name="estado" 
-                                        className="formControl formControlArrow formControl--primary" 
-                                        onChange={ (e) => this.onChange(e, false) }
-                                    >
-                                        <option value="0">Elige una opción</option>
-                                        {
-                                            estados.map((val, index) => {
-                                                return ( <option value={ index + 1 } key={ index }>{ val }</option>)
-                                            })
-                                        }
-                                </select>
+                                <Select 
+                                    name="estado"
+                                    className="select-lista" 
+                                    classNamePrefix="select-lista__select" 
+                                    placeholder="Elige una opción"
+                                    options={ estados }
+                                    onChange={ (e) => this.seleccionarEstado({target: { name:'estado', value: e.value }}) }
+                                />
                                 {
                                     this.state.estado !== '0' ? <img src={ icoCheck } alt="icoCheck"/> : <div className="select__flecha"></div>
                                 }
@@ -76,7 +88,7 @@ class DondeVivesComponent extends Component{
                     <div className="u-flex u-mt-1">
                         <div className="input-group u-mb-0 u-mr-1">
                             <label className="input-group__label">Alcaldia / Delegación</label>
-                            <div className="input-group__input">
+                            <div className={`input-group__input ${ this.state.alcaldia !== '' ? 'input-group__input--desac' : ''}`}>
                                 <input 
                                     name="alcaldia"
                                     placeholder=""
@@ -90,7 +102,7 @@ class DondeVivesComponent extends Component{
                         </div>
                         <div className="input-group u-mb-0">
                             <label className="input-group__label">Colonia</label>
-                            <div className="input-group__input">
+                            <div className={`input-group__input ${ this.state.colonia !== '' ? 'input-group__input--desac' : ''}`}>
                                 <input 
                                     name="colonia"
                                     placeholder=""

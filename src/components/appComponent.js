@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route, HashRouter } from 'react-router-dom';
 
 //Components
 import IndexComponent from './indexComponent';
@@ -11,7 +11,7 @@ import AgendarCitaComponent from './agendarCitaComponent';
 export default class App extends Component{
 	render(){
 		return(
-			<BrowserRouter>
+			<HashRouter>
 				<Switch>
 					<Route path='/' exact component={ IndexComponent }/>
 					<Route path='/solicitud-credito' exact component={ SolicitudCreditoComponent }/>
@@ -19,7 +19,7 @@ export default class App extends Component{
 					<Route path='/captura-credencial' exact component={ CapturaCredencialComponent }/>
 					<Route path='/agendar-cita' exact component={ AgendarCitaComponent }/>
 				</Switch>
-			</BrowserRouter>
+			</HashRouter>
 		)
 	}
 };
