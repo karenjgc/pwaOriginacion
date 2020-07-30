@@ -11,7 +11,7 @@ import AgendarCitaComponent from './agendarCitaComponent';
 export default class App extends Component{
 	render(){
 		return(
-			<HashRouter basename="/DOCTOSDMAQ/2020/07Jul/REQDC7970/entregable/vista">
+			<HashRouter basename="/DOCTOSDMAQ/2020/07Jul/REQDC7970/entregable/vista2">
 				<Switch>
 					<Route path='/' exact component={ IndexComponent }/>
 					<Route path='/solicitud-credito' exact component={ SolicitudCreditoComponent }/>

@@ -22,7 +22,7 @@ class HeaderComponent extends Component{
                 <div className="header-titulo">
                     <h1 className="header-titulo__titulo">{ headerData.titulo }</h1>
                     {
-                        headerData.subtitulo !== '' ?  <h2 className="header-titulo__subtitulo">{ headerData.subtitulo }&nbsp;<strong className="u-color-secundario">{ headerData.strong }</strong></h2> : null
+                        headerData.subtitulo !== '' ?  <h2 className="header-titulo__subtitulo">{ headerData.subtitulo }<strong className="u-color-secundario">{ headerData.strong }</strong></h2> : null
                     }
                 </div>
             </header>

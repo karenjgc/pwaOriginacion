@@ -1,7 +1,6 @@
 @import './fonts.scss';
 @import './colores.scss';
 @import './utilidades.scss';
-
 @import './contenedores.scss';
 @import './header.scss';
 @import './titulos.scss';
@@ -15,7 +14,7 @@
 @import './tooltips';
 
 body {
-    max-width: 768px; // Max-width you want
+    max-width: 1024px; // Max-width you want
     width: 100%;
     height: 100%;
     margin: 0 auto;

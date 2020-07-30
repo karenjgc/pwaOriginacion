@@ -28,6 +28,11 @@
     transform: scale(1);
     pointer-events: none;
     transition: opacity 0.3s, transform 0.2s;
+
+    &:focus{
+        outline: none!important;
+        border: none!important;
+    }
 }
 
 /* Span */

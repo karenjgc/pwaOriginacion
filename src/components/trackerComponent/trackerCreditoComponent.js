@@ -40,6 +40,7 @@ export default class TrackerCreditoComponent extends Component{
 
     state = {
         accion: 1,
+        capturaDigital: false,
         tracker: [
             {
                 num: '1',
@@ -64,16 +65,17 @@ export default class TrackerCreditoComponent extends Component{
         ]
     };
 
-    actualizaAccion = (valor) => {
+    actualizaAccion = (valor, capturaDigital = false) => {
         this.setState({
-            accion: valor
+            accion: valor,
+            capturaDigital: capturaDigital
         })
     };
 
     cargaComponente = () => {
         switch(this.state.accion){
             case 1: return <IdentificateComponent actualizaAccion={ this.actualizaAccion }/>;
-            case 2: return <InfoPersonalComponent actualizaAccion={ this.actualizaAccion }/>;
+            case 2: return <InfoPersonalComponent actualizaAccion={ this.actualizaAccion } capturaDigital={ this.state.capturaDigital }/>;
             case 3: return <DondeVivesComponent actualizaAccion={ this.actualizaAccion }/>;
             case 4: return <CapturaCredencialComponent actualizaAccion={ this.actualizaAccion }/>;
         }

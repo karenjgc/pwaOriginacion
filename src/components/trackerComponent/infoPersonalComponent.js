@@ -41,28 +41,32 @@ export default class InfoPersonalComponent extends Component{
     }
 
     render(){
+        let mostrarDatos = this.props.capturaDigital;
+
         return(
             <React.Fragment>
                 <div className="cont-tracker__modulo">
-                    <div className="cont-mensaje">
-                        <strong className="cont-mensaje__titulo">Datos personales</strong>
-                        <div>
-                            <strong>Nombre: </strong>
-                            <label className="u-txt-medium">Mariana López Loera</label>
-                        </div>
-                        <div>
-                            <strong>Fecha de nacimiento: </strong>
-                            <label className="u-txt-medium">10/09/1980</label>
-                        </div>
-                        <div>
-                            <strong>Lugar de nacimiento: </strong>
-                            <label className="u-txt-medium">CDMX</label>
-                        </div>
-                        <div>
-                            <strong>Sexo: </strong>
-                            <label className="u-txt-medium">Femenino</label>
-                        </div>
-                    </div>
+                    {
+                        mostrarDatos ? <div className="cont-mensaje">
+                            <strong className="cont-mensaje__titulo">Datos personales</strong>
+                            <div>
+                                <strong>Nombre: </strong>
+                                <label className="u-txt-medium">Mariana López Loera</label>
+                            </div>
+                            <div>
+                                <strong>Fecha de nacimiento: </strong>
+                                <label className="u-txt-medium">10/09/1980</label>
+                            </div>
+                            <div>
+                                <strong>Lugar de nacimiento: </strong>
+                                <label className="u-txt-medium">CDMX</label>
+                            </div>
+                            <div>
+                                <strong>Sexo: </strong>
+                                <label className="u-txt-medium">Femenino</label>
+                            </div>
+                        </div> : null
+                    }
                     <div>
                         <div className={`input-group u-mt-1 ${ this.state.muestraCorreos ? 'u-mb-0' : '' }`}>
                             <label className="input-group__label">Correo electrónico</label>

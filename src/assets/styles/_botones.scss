@@ -12,6 +12,10 @@
     text-align: center;
     min-width: 7rem;
     font-size: 14px;
+    min-height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &--primario{
         color: #ffff;

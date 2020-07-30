@@ -31,18 +31,26 @@ select::-ms-expand {
     width: 100%;
 }
 
+.select-lista__select__input{
+    & > input{
+        height: 0!important;
+    }
+}
+
 .select-lista__select__control{
     border: 1px solid #B3B3B3;
     border-color: #B3B3B3!important;
     border-radius: 2px!important;
-    padding: 2.5px 0;
+    padding: 2px 0 1.5px;
     width: 100%;
     font-size: 12px;
     font-family: $font-medium!important;
     min-height: unset!important;
 
     &--is-focused{
-        box-shadow: 0 0 0 1px $color-primario!important;
+        box-shadow: unset!important;
+        border-color: $color-primario!important;
+        background-color: #ffffff!important;
     }
 }
 

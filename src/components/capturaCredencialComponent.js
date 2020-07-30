@@ -36,7 +36,7 @@ class CapturaCredencialComponent extends Component{
                 tempImgSeleccionada = imgIneAtras;
             break;
             case 4:
-                this.props.actualizaAccion(2);
+                this.props.actualizaAccion(2, true);
             break;
             default:
                 tempImgSeleccionada = icoCamaraGris;

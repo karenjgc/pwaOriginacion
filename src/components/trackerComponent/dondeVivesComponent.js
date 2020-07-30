@@ -55,7 +55,7 @@ class DondeVivesComponent extends Component{
                 <div className="cont-tracker__modulo">
 
                     <div  className="u-flex u-mt-1">
-                    <div className="input-group u-mb-0 u-mr-1">
+                        <div className="input-group u-mb-0 u-mr-1">
                             <label className="input-group__label">Código postal</label>
                             <div className="input-group__input">
                                 <input 
@@ -69,7 +69,7 @@ class DondeVivesComponent extends Component{
                                 }
                             </div>
                         </div>
-                        <div className="input-group u-w-50 u-mb-0">
+                        <div className="input-group u-mb-0">
                             <label className="input-group__label">Estado</label>
                             <div className="input-group__input">
                                 <Select 
@@ -86,8 +86,9 @@ class DondeVivesComponent extends Component{
                             </div>
                         </div> 
                     </div>
+
                     <div className="u-flex u-mt-1">
-                        <div className="input-group u-mb-0 u-mr-1">
+                        <div className="input-group u-w-50 u-mb-0 u-mr-1">
                             <label className="input-group__label">Alcaldia / Delegación</label>
                             <div className={`input-group__input ${ this.state.alcaldia !== '' ? 'input-group__input--desac' : ''}`}>
                                 <input 
@@ -101,7 +102,7 @@ class DondeVivesComponent extends Component{
                                 }
                             </div>
                         </div>
-                        <div className="input-group u-mb-0">
+                        <div className="input-group u-w-50 u-mb-0">
                             <label className="input-group__label">Colonia</label>
                             <div className={`input-group__input ${ this.state.colonia !== '' ? 'input-group__input--desac' : ''}`}>
                                 <input 
@@ -116,6 +117,7 @@ class DondeVivesComponent extends Component{
                             </div>
                         </div>
                     </div>
+
                     <div className="input-group u-mt-1">
                         <label className="input-group__label">Calle</label>
                         <div className="input-group__input">
@@ -130,6 +132,7 @@ class DondeVivesComponent extends Component{
                             }
                         </div>
                     </div>
+                    
                     <div className="u-flex u-mt-1">
                         <div className="input-group u-mb-0 u-mr-1">
                             <label className="input-group__label">No.exterior</label>
@@ -160,6 +163,7 @@ class DondeVivesComponent extends Component{
                             </div>
                         </div>
                     </div>
+
                     <div className="input-group u-mt-1">
                         <label className="input-group__label">¿Entre qué calles se encuentra tu domicilio?</label>
                         <div className="input-group__input">
@@ -174,6 +178,7 @@ class DondeVivesComponent extends Component{
                             }
                         </div>
                     </div>
+                    
                     <div className="input-group u-mt-1">
                         <label className="input-group__label">Ayúdanos a identificar tu casa <small className="input-group__small input-group__small--negro">(puerta, fachada)</small></label>
                         <div className="input-group__input">
@@ -188,6 +193,7 @@ class DondeVivesComponent extends Component{
                             }
                         </div>
                     </div>
+                    
                     <div className="u-flex u-align-center">
                         <label className="checkbox">
                             <input 
