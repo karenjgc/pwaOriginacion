@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { layoutGenerator } from 'react-break';
 
 //Components
 import HeaderComponent from '../headerComponent';
@@ -38,8 +39,17 @@ export default class TrackerCreditoComponent extends Component{
         }
     ];
 
+    layout = layoutGenerator({
+        mobile: 0,
+        desktop: 1025
+    });
+    
+    OnDesktop = this.layout.isAtLeast('desktop');
+    OnMobile = this.layout.is('mobile');
+
     state = {
         accion: 1,
+        mostrarBoton: false,
         capturaDigital: false,
         tracker: [
             {
@@ -74,11 +84,19 @@ export default class TrackerCreditoComponent extends Component{
 
     cargaComponente = () => {
         switch(this.state.accion){
-            case 1: return <IdentificateComponent actualizaAccion={ this.actualizaAccion }/>;
+            case 1: return <IdentificateComponent muestraBoton={ this.muestraBoton }/>;
             case 2: return <InfoPersonalComponent actualizaAccion={ this.actualizaAccion } capturaDigital={ this.state.capturaDigital }/>;
             case 3: return <DondeVivesComponent actualizaAccion={ this.actualizaAccion }/>;
             case 4: return <CapturaCredencialComponent actualizaAccion={ this.actualizaAccion }/>;
         }
+    };
+
+    muestraBoton = () => {
+        this.setState({
+            mostrarBoton: !this.state.mostrarBoton
+        });
+
+        this.actualizaAccion(this.state.accion + 1);
     };
 
     render(){
@@ -87,26 +105,39 @@ export default class TrackerCreditoComponent extends Component{
         return(
             <div className="cont-landing">
                 <HeaderComponent headerData={ this.headerData[accion - 1] }/>
-                {
-                    accion < 4 ? <div className="cont-tracker u-pt-1">
-                    <div className="tracker">
-                            <strong><label className="u-color-primario">{ this.state.tracker[accion - 1].num }.&nbsp;</label>{ this.state.tracker[accion - 1 ].titulo }</strong>
-                            <div className="tracker__identificador">
-                                {
-                                    this.state.tracker.map((val, index) => {
-                                        if(val.mostrar){
-                                            return( <span className={`${ (index + 1) <= accion ? 'tracker__identificador--active' : ''}`} key={ index }></span>)
-                                        }
-                                    })
-                                }
+                <div className="cont-tracker">
+                    {
+                        accion < 4 ? <div className="cont-tracker__tracker u-pt-1">
+                        <div className="tracker">
+                                <strong><label className="u-color-primario">{ this.state.tracker[accion - 1].num }.&nbsp;</label>{ this.state.tracker[accion - 1 ].titulo }</strong>
+                                <div className="tracker__identificador">
+                                    {
+                                        this.state.tracker.map((val, index) => {
+                                            if(val.mostrar){
+                                                return( <span className={`${ (index + 1) <= accion ? 'tracker__identificador--active' : ''}`} key={ index }></span>)
+                                            }
+                                        })
+                                    }
+                                </div>
                             </div>
-                        </div>
-                    </div> : null
-                }
-                {
-                    this.cargaComponente()
-                }
-
+                        </div> : null
+                    }
+                    {
+                        this.cargaComponente()
+                    }
+                </div>
+                <this.OnMobile>
+                    {
+                        this.state.mostrarBoton ?  <div className="btn-center">
+                            <button onClick={ () => this.actualizaAccion(accion + 1) } className="btn btn--primario">Continuar</button>
+                        </div> : null
+                    }
+                </this.OnMobile>
+                <this.OnDesktop>
+                    <div className="btn-center">
+                        <button onClick={ () => this.actualizaAccion(accion + 1) } className="btn btn--primario">Continuar</button>
+                    </div> 
+                </this.OnDesktop>
                 {
                     accion < 4 ? <div className="btn-llamada">
                         <img src={ icoLlamada } alt="icoLLamada"/>

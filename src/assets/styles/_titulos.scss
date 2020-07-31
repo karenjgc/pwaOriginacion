@@ -16,3 +16,14 @@ h1, h2, h3, h4, h5{
     margin-bottom: .5rem;
     font-family: $font-medium;
 }
+
+@media only screen and (min-width: 1025px) {
+    .titulo-landing{
+        padding-top: unset;
+        justify-content: center;
+    }
+
+    .titulo-landing__titulo{
+        font-size: 24px;
+    }
+}

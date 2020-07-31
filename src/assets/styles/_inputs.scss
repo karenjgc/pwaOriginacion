@@ -1,10 +1,21 @@
-
-
 .input-group{
     display: flex;
     flex-direction: column;
     margin-bottom: 1.5rem;
     width: 100%;
+}
+
+.input-group__doble{
+    display: flex;
+
+    & > .input-group {
+        width: 50%;
+    }
+
+    & > .input-group:last-child{
+        width: 50%;
+        margin-right: 0;
+    }
 }
 
 .input-group__label{
@@ -19,6 +30,7 @@
     align-items: center;
     position: relative;
     width: 100%;
+    min-height: 32px;
 
     input{
         border: 1px solid #B3B3B3;
@@ -76,5 +88,16 @@
 
     img{
         margin-right: 4px;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+
+    .input-group__label{
+        font-size: 15px;
+    }
+
+    .input-group__input input{
+        font-size: 14px;
     }
 }

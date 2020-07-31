@@ -58,6 +58,12 @@
 }
 
 .cont-tracker{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.cont-tracker__tracker{
     padding: 0 10%;
 }
 
@@ -89,3 +95,30 @@
         height: 10rem;
     }
 }
+
+@media only screen and (min-width: 1025px) {
+    .cont-form{
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        margin: 3rem 15%;
+        padding: 6% 20%;
+        font-size: 15px;
+    }
+
+    .cont-tracker{
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        margin: 3% 13%;
+    }
+
+    .cont-input{
+        display: flex;
+        flex-wrap: wrap;
+
+        .input-group, .input-group__doble{
+            width: 48%;
+            margin-right: 2%;
+        }
+    }
+}
+

@@ -14,7 +14,7 @@
 @import './tooltips';
 
 body {
-    max-width: 1024px; // Max-width you want
+    //max-width: 1024px; // Max-width you want
     width: 100%;
     height: 100%;
     margin: 0 auto;
@@ -62,4 +62,9 @@ label{
 ::-webkit-scrollbar-thumb:hover {
     background: #33333357; 
 }
-  
+
+@media only screen and (min-width: 1025px) {
+    small{
+        font-size: 12px;
+    }
+}

@@ -92,7 +92,7 @@ export default class SolicitudCreditoComponent extends Component {
                         </React.Fragment> : null
                     }
                 </div>
-                <div className="u-flex u-align-center u-px-3">
+                <div className="checkbox-group">
                     <label className="checkbox">
                         <input 
                             name="terminosCondiciones"
