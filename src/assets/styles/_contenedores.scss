@@ -68,7 +68,7 @@
 }
 
 .cont-tracker__modulo{
-    padding: 0 10%;
+    padding: 0 7%;
     flex: 1 1 auto;
     font-size: 14px;
     padding-top: .5rem;
@@ -96,9 +96,7 @@
     }
 }
 
-
-
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1024px) {
     .cont-form{
         border: 1px solid lightgray;
         border-radius: 5px;
@@ -110,7 +108,7 @@
     .cont-tracker{
         border: 1px solid lightgray;
         border-radius: 5px;
-        margin: 3% 13%;
+        margin: 3% 10%;
     }
 
     .cont-tracker__modulo{
@@ -122,8 +120,13 @@
         flex-wrap: wrap;
 
         .input-group, .input-group__doble{
-            width: 48%;
-            margin-right: 2%;
+            width: 46%!important;
+            margin-right: 4%!important;
+        }
+
+        .input-group:nth-child(even), .input-group__doble:nth-child(even){
+            width: 50%!important;
+            margin-right: 0%!important;
         }
     }
 }

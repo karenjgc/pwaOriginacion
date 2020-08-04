@@ -20,7 +20,7 @@ export default class IndexComponent extends Component{
 
     layout = layoutGenerator({
         mobile: 0,
-        desktop: 1025
+        desktop: 1024
     });
     
     OnDesktop = this.layout.isAtLeast('desktop');
@@ -38,7 +38,7 @@ export default class IndexComponent extends Component{
                     <div className="titulo-landing">
                             <label className="titulo-landing__titulo">Confiamos en ti</label>
                             <label className="titulo-landing__titulo">y <strong>te decimos cómo sí</strong></label>
-                            <label className="titulo-landing__titulo">obtener un crédito</label>
+                            <label className="titulo-landing__titulo">obtener un crédito.</label>
                     </div>
                 </this.OnMobile>
 
@@ -49,7 +49,7 @@ export default class IndexComponent extends Component{
                     <div className="titulo-landing">
                         <strong className="titulo-landing__titulo u-mb-2">¡Hola!</strong>
                         <label className="titulo-landing__titulo">Confiamos en ti y <strong>te decimos cómo sí</strong></label>
-                        <label className="titulo-landing__titulo">obtener un crédito</label>
+                        <label className="titulo-landing__titulo">obtener un crédito.</label>
                     </div>
                 </this.OnDesktop>
 

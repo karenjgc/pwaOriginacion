@@ -102,7 +102,7 @@ export default class SolicitudCreditoComponent extends Component {
                         />
                         <span></span>
                     </label>
-                    <small>He leído y acepto las <a className="u-color-primario" href="facebook.com">Condiciones del servicio y la Política de privacidad </a> de Banco Azteca</small>
+                    <small>He leído y acepto las <a className="u-color-primario" href="facebook.com">Condiciones del servicio y la Política de privacidad </a> de Banco Azteca.</small>
                 </div>
                 <div className="btn-center">
                     <Link to={{ pathname: '/tracker-credito' }} className={`btn ${ this.evaluaFormulario() ? 'btn--primario' : 'btn--desac'}` }>Continuar</Link>

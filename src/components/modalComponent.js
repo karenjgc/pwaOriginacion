@@ -18,7 +18,7 @@ export default class ModalComponent extends Component{
                         <div className="modal-contenido__mensaje">
                             <h1 className="u-mb-1"><strong>¡Listo, Mariana!</strong></h1>
                             <label>Uno de nuestros asesores te llamará del</label>
-                            <label>número <strong>55 7099 0800</strong> para poder concluir</label>
+                            <label>número <strong className="u-color-primario">55 7099 0800</strong> para poder concluir</label>
                             <label className="u-mb-1">con tu trámite.</label>
                             <label>O si prefieres acelerar el proceso:</label>
                         </div>

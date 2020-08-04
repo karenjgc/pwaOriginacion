@@ -41,11 +41,12 @@ select::-ms-expand {
     border: 1px solid #B3B3B3;
     border-color: #B3B3B3!important;
     border-radius: 2px!important;
-    padding: 2px 0 1.5px;
+    padding: 0px 0 1.5px;
     width: 100%;
     font-size: 12px;
     font-family: $font-medium!important;
     min-height: unset!important;
+    height: 32px;
 
     &--is-focused{
         box-shadow: unset!important;
@@ -69,4 +70,11 @@ select::-ms-expand {
 
 .select-lista__select__indicators{
     display: none!important;
+}
+
+
+@media only screen and (min-width: 1024px) {
+    .select-lista__select__control {
+        font-size: 14px;
+    }
 }

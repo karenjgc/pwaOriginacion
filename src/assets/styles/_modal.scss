@@ -18,7 +18,7 @@ body.modal-overlay {
 
 .modal-contenido {
     background-color: #fefefe;
-    margin: 8% auto;
+    margin: 5% auto;
     width: 35rem;
     border-radius: 5px;
 }
@@ -62,10 +62,15 @@ body.modal-overlay {
 }
 
 .modal-contenido__mensaje{
-    width: 30rem;
+    width: 28rem;
     padding: 8rem 3rem 1rem;
     padding-top: 8rem;
     font-size: 18px;
     display: flex;
     flex-direction: column;
+    font-family: $font-medium;
+
+    h1{
+        font-size: 24px;
+    }
 }

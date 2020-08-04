@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5{
     font-family: $font-medium;
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1024px) {
     .titulo-landing{
         padding-top: unset;
         justify-content: center;

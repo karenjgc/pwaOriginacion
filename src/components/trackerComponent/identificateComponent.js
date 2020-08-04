@@ -43,7 +43,7 @@ class IdentificateComponent extends Component{
 
     layout = layoutGenerator({
         mobile: 0,
-        desktop: 1025
+        desktop: 1024
     });
     
     OnDesktop = this.layout.isAtLeast('desktop');
@@ -446,7 +446,7 @@ class IdentificateComponent extends Component{
                     </this.OnMobile>
                     
                     <this.OnDesktop className="u-flex u-mt-2">
-                        <div className="u-w-100 u-mr-2">
+                        <div className="u-w-100 u-mr-6">
                             <div className="input-group u-mb-0">
                                 <label className="input-group__label">Ingresa tu CURP (18 dígitos)</label>
                                 <div className={`input-group__input ${ this.state.sinCurp ? 'input-group__input--desac' : ''}`}>
@@ -501,35 +501,37 @@ class IdentificateComponent extends Component{
                                             }
                                         </div>
                                     </div> 
-                                    <div className="input-group u-mt-1">
-                                        <label className="input-group__label">Apellido paterno</label>
-                                        <div className="input-group__input">
-                                            <input 
-                                                name="apellidoPaterno"
-                                                placeholder=""
-                                                onChange={ (e) => this.onChange(e, false) }
-                                                value={ this.state.apellidoPaterno }
-                                            />
-                                            {
-                                                this.state.apellidoPaterno !== '' ? <img src={ icoCheck } alt="icoCheck"/> : null
-                                            }
-                                        </div>
-                                    </div> 
-                                    <div className="input-group u-mt-1">
-                                        <label className="input-group__label">Apellido materno</label>
-                                        <div className="input-group__input">
-                                            <input 
-                                                name="apellidoMaterno"
-                                                placeholder=""
-                                                onChange={ (e) => this.onChange(e, false) }
-                                                value={ this.state.apellidoMaterno }
-                                            />
-                                            {
-                                                this.state.apellidoMaterno !== '' ? <img src={ icoCheck } alt="icoCheck"/> : null
-                                            }
+                                    <div className="input-group__doble">
+                                        <div className="input-group u-mr-1">
+                                            <label className="input-group__label">Apellido paterno</label>
+                                            <div className="input-group__input">
+                                                <input 
+                                                    name="apellidoPaterno"
+                                                    placeholder=""
+                                                    onChange={ (e) => this.onChange(e, false) }
+                                                    value={ this.state.apellidoPaterno }
+                                                />
+                                                {
+                                                    this.state.apellidoPaterno !== '' ? <img src={ icoCheck } alt="icoCheck"/> : null
+                                                }
+                                            </div>
+                                        </div> 
+                                        <div className="input-group">
+                                            <label className="input-group__label">Apellido materno</label>
+                                            <div className="input-group__input">
+                                                <input 
+                                                    name="apellidoMaterno"
+                                                    placeholder=""
+                                                    onChange={ (e) => this.onChange(e, false) }
+                                                    value={ this.state.apellidoMaterno }
+                                                />
+                                                {
+                                                    this.state.apellidoMaterno !== '' ? <img src={ icoCheck } alt="icoCheck"/> : null
+                                                }
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="input-group u-mt-1">
+                                    <div className="input-group">
                                         <label className="input-group__label">Fecha de nacimiento</label>
                                         <div className="u-flex">
                                             <div className="input-group__input input-group__input--simple u-mr-1">
@@ -598,7 +600,7 @@ class IdentificateComponent extends Component{
                                 </React.Fragment> : null
                             }
                         </div>
-                        <div className="u-w-100 u-mr-2">
+                        <div className="u-w-100">
                             <div className="input-group u-mb-0">
                                 <label className="input-group__label">Código identificador de tu INE</label>
                                 <div className="input-group__input">

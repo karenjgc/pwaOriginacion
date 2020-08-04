@@ -205,7 +205,7 @@ class DondeVivesComponent extends Component{
                             />
                             <span></span>
                         </label>
-                        <small>He leído y acepto la <a className="u-color-primario" href="facebook.com">firma de contratos</a></small>
+                        <small>He leído y acepto la <a className="u-color-primario" href="facebook.com">firma de contratos.</a></small>
                     </div>
                 </div>
             </React.Fragment>

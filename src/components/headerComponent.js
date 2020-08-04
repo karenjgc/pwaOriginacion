@@ -15,7 +15,7 @@ class HeaderComponent extends Component{
 
     layout = layoutGenerator({
         mobile: 0,
-        desktop: 1025
+        desktop: 1024
     });
     
     OnDesktop = this.layout.isAtLeast('desktop');
