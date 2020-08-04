@@ -96,6 +96,8 @@
     }
 }
 
+
+
 @media only screen and (min-width: 1025px) {
     .cont-form{
         border: 1px solid lightgray;
@@ -109,6 +111,10 @@
         border: 1px solid lightgray;
         border-radius: 5px;
         margin: 3% 13%;
+    }
+
+    .cont-tracker__modulo{
+        padding-bottom: 8%;
     }
 
     .cont-input{

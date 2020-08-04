@@ -4,9 +4,8 @@ import React, { Component } from 'react';
 import icoCamaraGris from '../assets/img/icoCamaraGris.svg';
 import imgIneFrente from '../assets/img/imgIneFrente.jpg';
 import imgIneAtras from '../assets/img/imgIneAtras.jpg';
-import { withRouter } from 'react-router';
 
-class CapturaCredencialComponent extends Component{
+export default class CapturaCredencialComponent extends Component{
     state = {
         tipoImg: 1,
         imgSeleccionada: icoCamaraGris
@@ -36,6 +35,7 @@ class CapturaCredencialComponent extends Component{
                 tempImgSeleccionada = imgIneAtras;
             break;
             case 4:
+                this.props.muestraBoton();
                 this.props.actualizaAccion(2, true);
             break;
             default:
@@ -57,6 +57,4 @@ class CapturaCredencialComponent extends Component{
             </div>  
         )
     }
-}
-
-export default withRouter(CapturaCredencialComponent);
+};

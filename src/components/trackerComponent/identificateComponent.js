@@ -113,6 +113,13 @@ class IdentificateComponent extends Component{
         }, this.sendData);
     }
 
+    tipoFormulario = () => {
+        this.setState({
+            tipoFormulario: !this.tipoFormulario,
+        });
+        this.props.muestraBoton();
+    }
+
     render(){
         let genero = [
             { value: '1', label: 'Mujer' },
@@ -137,7 +144,9 @@ class IdentificateComponent extends Component{
                                     <img className="u-cursor-pointer" src={ icoCamara } alt="icoCamara" onClick={ () => this.props.actualizaAccion(4) }/>
                                 </div>
                                 <div className="u-flex-end">
-                                    <button name="tipoFormulario" className="btn-link-small" onClick={ () => this.props.muestraBoton() }>Ingresar datos manualmente</button>
+                                    <button name="tipoFormulario" className="btn-link-small" onClick={ this.tipoFormulario }>
+                                        Ingresar datos manualmente
+                                    </button>
                                 </div>                            
                             </div> :
                             <div className="u-pt-1">
