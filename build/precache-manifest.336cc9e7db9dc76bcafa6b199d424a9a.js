@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5725a9ed161a2b8113ae200cecee7015",
+    "revision": "1fde111b7f9bd9f1912b520c07e1a20a",
     "url": "/DOCTOSDMAQ/2020/08Ago/REQDC7970/entregable/vista2/index.html"
   },
   {
-    "revision": "f4bd24e8086a1f1ccbec",
-    "url": "/DOCTOSDMAQ/2020/08Ago/REQDC7970/entregable/vista2/static/css/main.41868751.chunk.css"
+    "revision": "27541fee9d8ab54725f1",
+    "url": "/DOCTOSDMAQ/2020/08Ago/REQDC7970/entregable/vista2/static/css/main.70d651e8.chunk.css"
   },
   {
     "revision": "a3db9575dcc30bb72eb7",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/DOCTOSDMAQ/2020/08Ago/REQDC7970/entregable/vista2/static/js/2.8be765e9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f4bd24e8086a1f1ccbec",
+    "revision": "27541fee9d8ab54725f1",
     "url": "/DOCTOSDMAQ/2020/08Ago/REQDC7970/entregable/vista2/static/js/main.1a37dafe.chunk.js"
   },
   {

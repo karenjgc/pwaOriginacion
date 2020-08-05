@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/DOCTOSDMAQ/2020/08Ago/REQDC7970/entregable/vista2/precache-manifest.aafcb4032c207b6444e01f520582a8bb.js"
+  "/DOCTOSDMAQ/2020/08Ago/REQDC7970/entregable/vista2/precache-manifest.336cc9e7db9dc76bcafa6b199d424a9a.js"
 );
 
 self.addEventListener('message', (event) => {
